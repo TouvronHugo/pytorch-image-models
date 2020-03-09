@@ -1,0 +1,8 @@
+pyyaml
+attrs
+numpy
+torch
+torchbench
+torchvision
+Pillow
+tqdm
