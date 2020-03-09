@@ -59,6 +59,7 @@ for test_size,mean_type,model_name,batch_size,architecture_name in zip(test_size
     # Run the benchmark
     ImageNet.benchmark(
         model=model,
+        model_description='FixRes',
         paper_model_name=model_name,
         paper_arxiv_id='1906.06423',
         input_transform=input_transform,
