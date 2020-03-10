@@ -12,6 +12,7 @@ from timm import create_model
 import torchvision.transforms.functional as F
 from torchvision import transforms
 from PIL import Image
+import torch 
 
 def get_transforms_v2(test_size=224, backbone='EfficientNetL2',crop_ptc=1.0,mean_type=False):
     mean, std = [0.485, 0.456, 0.406], [0.229, 0.224, 0.225]
@@ -56,7 +57,9 @@ for test_size,mean_type,model_name,batch_size,architecture_name in zip(test_size
     print("load "+str(count2*100/count)+" %")
     model.eval()
     model.require_grad=False
+    
     # Run the benchmark
+    
     ImageNet.benchmark(
         model=model,
         model_description='FixRes',
@@ -66,3 +69,5 @@ for test_size,mean_type,model_name,batch_size,architecture_name in zip(test_size
         batch_size=batch_size,
         num_gpu=1
     )
+    torch.cuda.empty_cache()
+
